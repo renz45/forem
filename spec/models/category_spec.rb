@@ -19,4 +19,8 @@ describe Forem::Category do
     end
   end
 
+  it "has many categories" do
+    @category.should have_many :categories
+  end
+
 end
