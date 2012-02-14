@@ -1,2 +1,7 @@
-<h2><%= link_to t('forem.forum.forums'), forums_path %> &raquo; <%= link_to @category, @category %></h2>
-<%= render @category %>
+<h2><%= breadcrumbs_for_category @category %></h2>
+
+<% if @category.categories.length > 0 %>
+  <%= render @category.categories %>
+<% else %>
+  <%= render 'forem/forums/listing', category: @category %>
+<% end %>

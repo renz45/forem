@@ -1,6 +1,7 @@
 module Forem
   module ApplicationHelper
     include FormattingHelper
+    include BreadcrumbsHelper
     # processes text with installed markup formatter
     def forem_format(text, *options)
       as_formatted_html(text)
