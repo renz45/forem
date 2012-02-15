@@ -18,16 +18,12 @@ module Forem
       crumb = "#{breadcrumbs_for_category(forum.category, true)} &raquo; "
       
       crumb << if display_current_link
-        link_to(forum, forum)
+        link_to(forum.title, forum)
       else
-        forum
+        forum.title
       end
 
       crumb.html_safe
-    end
-
-    def breadcrumbs_for_topic topic
-      "#{breadcrumbs_for_forum(topic.forum, true)} &raquo; #{topic.subject}".html_safe
     end
   end
 end
