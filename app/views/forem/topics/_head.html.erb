@@ -1,4 +1,4 @@
-<h2><%= breadcrumbs_for_forum topic.forum, true %></h2>
+<h2><%= breadcrumbs_for_forum topic.forum, display_current_link: true %></h2>
 <h2><%= topic.subject %></h2>
 <% if forem_admin? %>
   <%= link_to t('forem.topic.links.edit'), edit_admin_topic_path(topic) %>

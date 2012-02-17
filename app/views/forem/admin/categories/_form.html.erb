@@ -1,4 +1,6 @@
 <%= simple_form_for [:admin, @category] do |f| %>
   <%= f.input :name %>
+  <%= f.hidden_field :category_id %>
   <%= f.submit %>
+  <%= link_to 'Cancel', admin_category_url(@category) %>
 <% end %>

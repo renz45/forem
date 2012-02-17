@@ -4,7 +4,11 @@ module Forem
       before_filter :find_category, :only => [:edit, :update, :destroy]
 
       def index
-        @category = Forem::Category.all
+        @categories = Forem::Category.where(category_id: nil)
+      end
+
+      def show
+        @category = Forem::Category.find(params[:id])
       end
 
       def new
@@ -27,8 +31,9 @@ module Forem
 
       def update
         if @category.update_attributes(params[:category])
-          flash[:notice] = t("forem.admin.category.updated")
-          redirect_to admin_categories_path
+          # flash[:notice] = t("forem.admin.category.updated")
+          # redirect_to admin_categories_path
+          redirect_to :back
         else
           flash.now.alert = t("forem.admin.category.not_updated")
           render :action => "edit"

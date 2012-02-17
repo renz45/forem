@@ -5,6 +5,7 @@ module Forem
 
       def index
         # TODO: perhaps gather some stats here to show on the admin page?
+        redirect_to admin_categories_url
       end
 
       private

@@ -8,6 +8,6 @@
   </tr>
   </thead>
   <tbody>
-    <%= render category.forums %>
+    <%= render category.forums.order('title ASC') %>
   </tbody>
 </table>

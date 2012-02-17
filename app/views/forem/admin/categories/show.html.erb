@@ -1,0 +1,11 @@
+<h2><%= t("forem.admin.category.index") %></h2>
+<h2><%= breadcrumbs_for_category @category, admin: true %></h2>
+<%= link_to t("forem.admin.category.new_link"), new_admin_category_path %>
+<% if @category.categories.count > 0 %>
+  <%= render 'list_categories', categories: @category.categories %>
+<% else %>
+  <%= render 'forem/admin/forums/list_forums', forums: @category.forums %>
+<% end %>
+
+<%= link_to t('forem.admin.forum.index'), admin_forums_path %>
+
