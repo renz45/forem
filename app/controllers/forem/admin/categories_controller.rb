@@ -17,13 +17,26 @@ module Forem
 
       def create
         @category = Forem::Category.new(params[:category])
+        
+
         if @category.save
           flash[:notice] = t("forem.admin.category.created")
-          redirect_to admin_categories_path
+
+          if params[:child_category]
+            child_category = Forem::Category.find(params[:child_category])
+            @category.category_id = child_category.category_id
+            @category.save
+            child_category.category_id = @category.id
+            child_category.save
+          end
+
+          # redirect_to admin_categories_path
         else
           flash.now.alert = t("forem.admin.category.not_created")
-          render :action => "new"
+          # render :action => "new"
         end
+
+        redirect_to :back
       end
 
       def edit
